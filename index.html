@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson Git and Github</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+    <div class="base_content">
+        <h1>Урок работы с Git и Github</h1>
+        <h2>Установка Git Bash</h2>
+            <a href="https://git-scm.com/downloads"><i>https://git-scm.com/downloads</i></a>
+        <h2>Понятия Git</h2>
+        <b>HEAD</b> &ndash; указатель ссылающийся на фиксированную точку (commit) ветки, который станет родителем следующей фиксированной точки.
+        <h2>Переход в папку для работы с Git</h2>
+            <ol>
+                <li>Перейти к командной строке Windows или bash Linux;</li>
+                <li><span class="col_blue">git --version</span> показывает установленную версию Git;</li>
+                <li>Перейти в папку с проектом <b>cd</b> &lt;<i>путь_к_папке</i>&gt;</li>
+                <li><b>code .</b> запустить редактор кода Visual Studio Code.</li>
+            </ol>
+        <h2>init инициализация проекта</h2>
+            <b><span class="col_blue">git init</span></b> &ndash; создаёт в текущем каталоге новый подкаталог с именем .git с настройками Git проекта.<br>
+            <b><span class="col_blue">git status</span></b> &ndash; показывает статус Git, в последствии перед выполнением команд лучше проверять статус для выбора правилных действий.<br>
+            <i>On branch master</i> &ndash; ветка master включена.<br>
+            <i>No commits yet</i> &ndash; пока нет коммитов.<br>
+            <i>Untracked files:</i> &ndash; без отслеживания.
+        <h2>add начало отслеживания файлов</h2>
+            Приступая к редактированию проекта нужно выбрать что нам необходимо отслеживать.<br>
+            <span class="col_blue">git add</span> &lt;<i>имя_файла или имя_папки/</i>&gt; &ndash; начать отслеживать файл имя_файла или имя_папки/.<br>
+            <span class="col_blue">git add .</span> &ndash; начать отслеживать все файлы (точка через пробел в конце).
+        <h2>commit фиксирование состояния ветки (branch)</h2>
+            При необходимости создаем запись состояния ветки.<br>
+            <span class="col_blue">git commit</span> <span class="col_silver">-m</span> &lt;<i>"имя_коммита"</i>&gt; &ndash; создает точку сохранения состояния ветки.
+        <h2>log показывает историю фиксаций</h2>
+            <span class="col_blue">git log</span> &ndash; показывает историю созданных commit снизу вверх.<br>
+            <span class="col_blue">git log</span> <i><span class="col_silver">-p</span></i> &ndash; папаметр -p показывает внесенные изменения фиксированных точек.<br>
+            Прокрутка стрелочками вниз и вверх.<br>
+            Записать log в файл кнопка s.<br>
+            Что бы продолжить работу кнопка q.<br>
+            <span class="col_blue">git log</span> <i><span class="col_silver">--oneline</span></i> &ndash; папаметр --oneline выводит краткую запись фиксированных точек.
+        <h2>checkout работа с фиксированными точками проекта</h2>
+            <span class="col_blue">git checkout</span> &lt;<i>хеш_фиксированной_точки</i>&gt; &ndash; переходит на указанную фиксированную точку.<br>
+        <h2>reset работа с фиксированными точками проекта</h2>
+            <span class="col_blue">git reset</span> [<i><span class="col_silver">--soft</span></i>] &lt;<i>хеш_фиксированной_точки</i>&gt; &ndash; <span class="col_green">не перемещяет HEAD</span>, <span class="col_green">не меняет файлы</span>.<br>
+            <span class="col_blue">git reset</span> [<i><span class="col_silver">--mixed</span></i>] &lt;<i>хеш_фиксированной_точки</i>&gt; &ndash; параметр --mixed по умолчанию, <span class="col_red">перемещяет HEAD</span>, <span class="col_green">не меняет файлы</span>.<br>
+            <span class="col_blue">git reset</span> [<i><span class="col_silver">--hard</span></i>] &lt;<i>хеш_фиксированной_точки</i>&gt; &ndash; <span class="col_red">перемещяет HEAD</span>, <span class="col_red">меняет файлы</span>.<br>
+        <h2>revert работа с фиксированными точками проекта</h2>
+            <span class="col_blue">git revert</span> [<i><span class="col_silver">--edit</span></i>] &lt;<i>хеш_фиксированной_точки</i>&gt; &ndash; параметр --edit по умолчанию, берет состояние фиксированной точки и создает новую.<br>
+            <span class="col_blue">git revert</span> &ndash; <span class="col_green">не перемещяет HEAD</span>, <span class="col_green">не меняет файлы</span>.<br>
+            <i><span class="col_silver">--no-edit</span></i> &ndash; не оставляет комменарий.<br>
+            <i><span class="col_silver">--no-commit</span></i> &ndash; не создает фиксированную точку, обращенные изменения будут добавлены в раздел проиндексированных файлов и рабочий каталог.
+        <h2>branch работа с ветками проекта</h2>
+            <span class="col_blue">git branch</span> &ndash; показывает ветки проекта, * обозначается выбранная ветка.<br>
+            <span class="col_blue">git branch</span> [<i><span class="col_silver">-r</span></i>] &ndash; показывает ветки из удаленного репозитория.<br>
+            <span class="col_blue">git branch</span> &lt;<i>имя_новой_ветки</i>&gt; &ndash; создает ветку имя_новой_ветки, копию выбранной ветки.<br>
+            <span class="col_blue">git branch</span> <i><span class="col_silver">-D</span></i> &lt;<i>имя_ветки</i>&gt; &ndash; параметр -D удаляет ветку с указанным именем.<br>
+            <span class="col_blue">git branch</span> <i><span class="col_silver">-m</span></i> &lt;<i>имя_ветки</i>&gt; &ndash; параметр -m переименовывает ветку.
+        <h2>checkout работа с ветками проекта</h2>
+            <span class="col_blue">git checkout</span> &lt;<i>имя_ветки</i>&gt; &ndash; переключается на имя_ветки.<br>
+            <span class="col_blue">git checkout</span> <i><span class="col_silver">-b</span></i> &lt;<i>имя_ветки</i>&gt; &ndash; создает ветку и переключается на нее.
+        <h2>merge слияние веток</h2>
+            <span class="col_blue">git merge</span> &lt;<i>имя_ветки</i>&gt; &ndash; объединяет текущию ветку с имя_ветки.
+        <h2>remote регитрация нового удаленного репозитория</h2>
+            <span class="col_blue">git remote add</span> &lt;origin&gt; &lt;<i>адрес_репозитория</i>&gt; &ndash; регистрирует (origin - название удаленного репозитория)  по адрес_репозитория.
+        <h2>remote просмотр удаленных репозиториев</h2>
+            <span class="col_blue">git remote</span> &ndash; показывает все удаленные репозитории с которыми работаем.<br>
+            <span class="col_blue">git remote show</span> &lt;origin&gt; &ndash; показывает информацию (origin - название удаленного репозитория).<br>
+            <span class="col_blue">git remote</span> <i><span class="col_silver">-v</span></i> &ndash; показывает все удаленные репозитории вместе с адресом репозитория.
+        <h2>remote переименование удаленных репозиториев</h2>
+            <span class="col_blue">git remote rename</span> &lt;old_name&gt; &lt;new_name&gt; &ndash; переименовывает удаленный реполиторий с именем old_name на новое имя new_name.
+        <h2>remote удаление удаленных репозиториев</h2>
+            <span class="col_blue">git remote rm</span> &lt;origin&gt; &ndash; удаляет удаленный репозиторий (origin - название удаленного репозитория).
+        <h2>push публиция файлов на удаленном сервере</h2>
+            <span class="col_blue">git push</span> <span class="col_silver">-u</span> &lt;origin&gt; &lt;<i>имя_ветки</i>&gt; &ndash; загружает в (origin - название удаленного репозитория) указанную ветку (имя_ветки).
+        <h2>clone клонирование репозитория</h2>
+            <span class="col_blue">git clone</span> &lt;<i>адрес_репозитория</i>&gt; ./ &ndash; загружает удаленный репозиторий в пустую папку, команда дожна выполнятся из выбранной папки.
+        <h2>pull обновление из удаленного репозитория</h2>
+            <span class="col_blue">git pull</span> &lt;<i>адрес_репозитория</i>&gt; &ndash; обновляет активную ветку из удаленного репозитория (сохранить ожидающие изменения в ветке).
+        <h2>fetch обновление из удаленного репозитория</h2>
+            <span class="col_blue">git fetch</span> &lt;<i>адрес_репозитория</i>&gt; &ndash; извлекает все ветки из репозитория (создаются отдельные ветки).<br>
+            <span class="col_blue">git fetch</span> &lt;<i>адрес_репозитория</i>&gt; &lt;<i>имя_ветки</i>&gt; &ndash; извлекает указанную ветку.<br>
+            <span class="col_blue">git fetch</span> [<i><span class="col_silver">--all</span></i>] &ndash; извлекает все зарегистрированные удаленные репозитории и их ветки.<br>
+            <span class="col_blue">git fetch origin</span> &ndash; синхронизирует локальный репозиторий с главной веткой удаленного центрального репозитория, команда покажет загруженные ветки.
+        <h2>Git Tags</h2>
+            <i>Tags указывают на важные фиксиорванные точки в истории Git.</i>
+        <h2>Tag работа с tags проекта</h2>
+        <span class="col_blue">git tag</span> &lt;<i>имя_тэга</i>&gt; создает ярлык (teg) для фиксированной точки.<br>
+        <span class="col_blue">git tag</span> <i><span class="col_silver">-a</span></i> &lt;<i>имя_тэга</i>&gt; <i><span class="col_silver">-m</span></i> "имя_комментария" &ndash; добавляет к тегу комментарий.
+    </div>
+    <footer>
+        Все права защищены &copy; 2021 создатель Голубцов Павел Викторович.
+    </footer>
+</body>
+</html>
